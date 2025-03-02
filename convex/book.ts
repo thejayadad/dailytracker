@@ -30,3 +30,14 @@ export const getBook = query({
     return books
   }
 })
+
+export const getBookById = query({
+  args: { id: v.id("books") }, // Require a valid book ID
+  handler: async (ctx, { id }) => {
+    const book = await ctx.db.get(id); // Fetch book by ID
+    if (!book) {
+      throw new Error("Book not found");
+    }
+    return book;
+  },
+});
