@@ -1,4 +1,4 @@
-import { mutation } from "../convex/_generated/server"; // Correct import for Convex mutation
+import { mutation, query } from "../convex/_generated/server"; // Correct import for Convex mutation
 import { v } from "convex/values";
 
 export const createBook = mutation({
@@ -18,3 +18,15 @@ export const createBook = mutation({
     return bookId; // Return the newly created book ID
   },
 });
+
+
+export const getBook = query({
+  handler: async(ctx) => {
+    const books = await ctx.db
+    .query("books")
+    .collect()
+    console.log("Books " + books)
+
+    return books
+  }
+})

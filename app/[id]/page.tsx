@@ -9,7 +9,14 @@ const SingleBookPage = () => {
     const params = useParams();
     const bookId = params?.id as string;
   return (
-    <div>SingleBookPage</div>
+    <div className="w-full h-full">
+      <div className="mx-auto max-w-screen-xl p-4 flex flex-col w-full h-full">
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-1 h-full'>
+            <div className='col-span-1'>Preview</div>
+            <div className='col-span-1'>Content</div>
+        </div>
+        </div>
+    </div>
   )
 }
 
